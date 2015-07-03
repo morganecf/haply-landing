@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+  <head>
+
+  <style>
+		path {
+		  stroke: #fff;
+		}
+
+		path:first-child {
+		  fill: yellow !important;
+		}
+
+		circle {
+		  fill: #000;
+		  pointer-events: none;
+		}
+
+		.q0-9 { fill: rgb(197,27,125); }
+		.q1-9 { fill: rgb(222,119,174); }
+		.q2-9 { fill: rgb(241,182,218); }
+		.q3-9 { fill: rgb(253,224,239); }
+		.q4-9 { fill: rgb(247,247,247); }
+		.q5-9 { fill: rgb(230,245,208); }
+		.q6-9 { fill: rgb(184,225,134); }
+		.q7-9 { fill: rgb(127,188,65); }
+		.q8-9 { fill: rgb(77,146,33); }
+
+		svg {
+			z-index: 2;
+			position: absolute;
+			margin-top: 180px;
+			left: 0;
+		}
+
+		#canvas { 
+			z-index: 3; 
+			position: absolute;
+		}
+	</style>
+
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/paper-full.min.js"></script>
+  <script src="js/d3.min.js"></script>
+
+  <script type="text/paperscript" canvas="canvas">
+
+	$(document).ready(function () {
+
+		// TODO: Once the document has loaded get the canvas size 
+		// var width = $("#canvas").width();
+		// var height = $("#canvas").height();
+
+		var width = 950, height = 500;
+
+		var nodes = d3.range(50).map(function() { return {radius: Math.random() * 12 + 4}; }),
+		    root = nodes[0],
+		    color = d3.scale.category10();
+
+		root.radius = 0;
+		root.fixed = true;
+
+		var force = d3.layout.force()
+		    .gravity(0.05)
+		    .charge(function(d, i) { return i ? 0 : -2000; })
+		    .nodes(nodes)
+		    .size([width, height]);
+
+		force.start();
+
+		var svg = d3.select("body").append("svg")
+		    .attr("width", width)
+		    .attr("height", height)
+		    .attr("id", "svg-canvas");
+
+		svg.selectAll("circle")
+		    .data(nodes.slice(1))
+		  	.enter().append("circle")
+		    .attr("r", function(d) { return d.radius; })
+		    .style("fill", "purple")
+		    .style("opacity", 0.7)
+		    .style("stroke", "black");
+
+		force.on("tick", function(e) {
+		  var q = d3.geom.quadtree(nodes),
+		      i = 0,
+		      n = nodes.length;
+
+		  while (++i < n) q.visit(collide(nodes[i]));
+
+		  svg.selectAll("circle")
+		      .attr("cx", function(d) { return d.x; })
+		      .attr("cy", function(d) { return d.y; });
+		});
+
+		function collide(node) {
+		  var r = node.radius + 16,
+		      nx1 = node.x - r,
+		      nx2 = node.x + r,
+		      ny1 = node.y - r,
+		      ny2 = node.y + r;
+		  return function(quad, x1, y1, x2, y2) {
+		    if (quad.point && (quad.point !== node)) {
+		      var x = node.x - quad.point.x,
+		          y = node.y - quad.point.y,
+		          l = Math.sqrt(x * x + y * y),
+		          r = node.radius + quad.point.radius;
+		      if (l < r) {
+		        l = (l - r) / l * .5;
+		        node.x -= x *= l;
+		        node.y -= y *= l;
+		        quad.point.x += x;
+		        quad.point.y += y;
+		      }
+		    }
+		    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+		  };
+		}
+
+
+		/* Create the haplet */
+
+		// Draw the tablet  
+		var tablet = function () {
+			var tab = {};
+
+			// Variables controlling size
+			tab.length = 600;
+			tab.width = tab.length / 1.4;
+			tab.padding = 35;
+			tab.top = new Point((width / 2) - (tab.length / 2), 50);
+
+			// Tablet outline 
+			tab.box = new Rectangle({
+				topLeft: tab.top,
+				topRight: new Point(tab.top.x + tab.length, tab.top.y),
+				bottomLeft: new Point(tab.top.x, tab.top.y + tab.width),
+				bottomRight: new Point(tab.top.x + tab.length, tab.top.y + tab.width)
+			});
+
+			var corner_size = new Size(23, 23);
+			tab.outer = new Path.RoundRectangle(tab.box, corner_size);
+
+			tab.inner = new Path.Rectangle({
+				topLeft: new Point(tab.box.topLeft.x + tab.padding * 2, tab.box.topLeft.y + tab.padding),
+				topRight: new Point(tab.box.topRight.x - tab.padding * 2, tab.box.topRight.y + tab.padding),
+				bottomLeft: new Point(tab.box.bottomLeft.x + tab.padding, tab.box.bottomLeft.y - tab.padding),
+				bottomRight: new Point(tab.box.bottomRight.x - tab.padding, tab.box.bottomRight.y - tab.padding)
+			});
+
+			// On button 
+			var button_x = tab.box.topLeft.x + 15;
+			var button_y = tab.length / 2;
+			var button_location = new Point(button_x, button_y);
+			tab.button = new Path.Circle(button_location, 10);
+
+			// Style the tablet 
+			tab.outer.fillColor = 'black';
+			tab.inner.fillColor = 'white';
+			tab.button.fillColor = 'white';
+
+			tab.tablet = new Group([tab.outer, tab.inner, tab.button]);
+
+			return tab;
+		}();
+
+		// Draw the base motors in the middle of the canvas 
+		var motor_radius = 20, mid = width / 2, overlap = 10, start_height = 60;
+		var motor_center1 = new Point(mid - motor_radius + overlap, start_height);
+		var motor_center2 = new Point(mid + motor_radius - overlap, start_height);
+		var motor1 = new Path.Circle(motor_center1, motor_radius);
+		var motor2 = new Path.Circle(motor_center2, motor_radius);
+
+		// Define arm size and joint positions 
+		var arm_size = 185;
+		var joint1 = new Point(motor_center1.x, motor_center1.y + arm_size);
+		var joint2 = new Point(motor_center2.x, motor_center2.y + arm_size);
+
+		// Define the stylus position 
+		var stylus_pos = new Point(mid, arm_size * 2);
+
+		// Draw the first two arms (top of joints)
+		var top = new Point(mid, start_height);
+		var arm1 = new Path(top, joint1);
+		var arm2 = new Path(top, joint2);
+
+		// Draw the second two arms (bottom of joints)
+		var bottom = new Point(mid, joint1.y + arm_size);
+		var arm3 = new Path(joint1, new Point(mid, bottom));
+		var arm4 = new Path(joint2, new Point(mid, bottom));
+
+		// Draw the stylus 
+		var stylus_radius = 20;
+		var stylus = new Path.Circle(new Point(mid, joint1.y + arm_size), stylus_radius);
+
+		/* Styling functions */ 
+
+		// Style the motors 
+		var motor_style = function (motor) {
+			motor.fillColor = 'black';
+			motor.opacity = 0.8;
+		};
+
+		// Style the arms 
+		var arm_style = function (arm, color) {
+			arm.strokeColor = color;
+			arm.strokeWidth = 20;
+			arm.strokeCap = 'round';
+			arm.opacity = 0.7;
+		};
+
+		// Apply motor styles 
+		// motor_style(motor1);
+		// motor_style(motor2);
+
+		// Apply arm styles
+		arm_style(arm1, '#87CEFA');
+		arm_style(arm2, '#87CEFA');
+		arm_style(arm3, '#191970');
+		arm_style(arm4, '#191970');
+
+		// Style the stylus, stylishly  
+		stylus.fillColor = 'white';
+		stylus.strokeColor = 'grey'
+		stylus.strokeWidth = 3;
+		stylus.opacity = 0.85;
+
+		// The arms fade colors 
+		var color_changer = setInterval(function () {
+		}, 500);
+
+		/* Movement functionality */
+		var moving = false;
+
+		// Compute distance between joint and center 
+		var joint_dist = function (x) {
+			return Math.sqrt(Math.pow(arm_size, 2) - Math.pow(x / 2.0, 2)) || 0;
+		};
+
+		// True if coordinates are in the stylus
+		var clicked = function (x, y) {
+			var r = Math.pow(stylus.position.x - x, 2) + Math.pow(stylus.position.y - y, 2);
+			return r <= Math.pow(stylus_radius, 2);
+        };
+
+		// Mouse click event listener 
+		$("#canvas").mousedown(function (event) {
+			// If we've clicked on the stylus, start moving
+			if (clicked(event.pageX, event.pageY)) {
+				moving = true;
+
+				// Fix the arm color 
+				clearInterval(color_changer);
+			}
+		});
+
+		$("#canvas").mousemove(function (event) {
+			// Only move everything if we've already clicked on the stylus
+			// and within the movable frame  
+			if (moving && event.pageY > joint1.y && event.pageY < bottom.y) {
+
+				// Move the stylus
+				stylus.position.y = event.pageY;
+
+				// Get the top to bottom length
+				var l = stylus.position.y - top.y;
+
+				// Calculate the length-wise distance the joint must move
+				var d = joint_dist(l);
+
+				// Move the joint/arms
+				arm1.segments[1].point.x = mid - d;
+				arm2.segments[1].point.x = mid + d;
+				arm3.segments[0].point.x = mid - d;
+				arm4.segments[0].point.x = mid + d;
+				arm3.segments[1].point.y = event.pageY;
+				arm4.segments[1].point.y = event.pageY;
+
+				// Move the balls 
+			  	root.px = event.pageX;
+			  	root.py = event.pageY;
+			  	force.resume();
+
+			}
+		});
+
+		// Mouse up event listener 
+		$("#canvas").mouseup(function (event) {
+			moving = false;
+
+			// Gracefully return to starting position 
+		});
+
+	});
+
+  </script>
+
+</head>
+
+<body>
+	<canvas id="canvas" width="950" height="1000" keepalive="true"></canvas>
+</body>
+
+</html>
