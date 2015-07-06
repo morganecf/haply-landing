@@ -15,18 +15,55 @@ a, a:hover, a:focus, a:active, a.active {
 h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 700;
+    font-weight: 100;
 }
 
 .img-centered {
     margin: 0 auto;
 }
 
+.img-responsive {
+    height: 200px;
+    width: 230px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border: 3px solid white;
+}
+.member-description {
+    display: none;
+    margin-left: -10px;
+    position: absolute;
+    z-index: 3;
+    background: black;
+    width: 230px;
+    height: 200px;
+    opacity: 0.7;
+    text-align: center;
+}
+.member-description-text {
+    text-align: center;
+    margin-top: 30px;
+}
+.member-name {
+    background: white;
+    color: #282828;
+    position: absolute;
+    padding: 5px;
+}
+.member-name:hover {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 3px solid black;
+}
+.img-responsive:hover {
+    border: 3px solid black;
+}
+
 header {
     text-align: center;
     color: #fff;
-    /*background: #282828;*/
-    background: white;
+    background: #282828;
+    /*background: white;*/
 }
 
 header .container {
@@ -42,27 +79,16 @@ header img {
 header .intro-text .name {
     display: block;
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 2em;
-    font-weight: 700;
+    font-weight: 100;
 }
 
 header .intro-text .skills {
     font-size: 1.25em;
-    font-weight: 300;
+    font-weight: 100;
 }
 
-#tablet-svg {
-    color: white;
-}
-
-#preorder {
-    border: 3px solid white;
-    border-radius: 2px;
-}
-#preorder:hover {
-    border: 3px solid black;
-}
 
 @media(min-width:768px) {
     header .container {
@@ -161,8 +187,39 @@ section.success a.active {
 
 /* The header section */
 .navbar-default {
-    background-color: #F7AC16;
-    border-bottom: 10px solid #F77416;
+    /* the yellow/orange combination */
+    /*background-color: #F7AC16;
+    border-bottom: 10px solid #F77416;*/
+
+    /* the purple/blue combination */
+    /*background-color: #005878;
+    border-bottom: 10px solid #70026D;*/
+
+    /* the black and white combination */
+    background-color: white;
+    border-bottom: 5px solid black;
+    opacity: 0.7;
+}
+#haply-title, #technology, #team, #preorder {
+    color: black;
+}
+#technology:hover, #team:hover, #haply-title:hover {
+    color: #005878;
+    transition: all .3s ease-in-out;
+}
+
+#preorder {
+    border: 3px solid black;
+    border-radius: 2px;
+}
+#preorder:hover {
+    background: black;
+    color: white;
+    transition: all .4s ease-in-out;
+}
+
+#tablet-svg {
+    color: white;
 }
 
 /* The demo section */
@@ -172,18 +229,21 @@ section.success a.active {
 }
 
 /* The pitch section */
+#pitch-panel {
+    background-color: #70026D;
+    margin-top: -120px;
+}
 .pitch {
-    color: #70026D;
+    color: white;
     text-align: right;
     margin-left: -60px;
 }
 #pitch-1 {
     font-size: 40px;
-    margin-top: -30px;
+    margin-top: 100px;
 }
 #pitch-2 {
     font-size: 50px;
-    margin-top: -20px;
 }
 #touch {
     border-bottom: 5px solid #005878;
@@ -191,16 +251,49 @@ section.success a.active {
 
 /* The technology section */
 #portfolio {
-    background-color: white;
-    color: black;
-    border-bottom: 10px solid #005878;
+    background-color: #70026D;
+    color: white;
+    /*border-bottom: 10px solid #005878;*/
+}
+
+#tech-section-header {
+    border: 3px solid white;
+    padding: 10px;
 }
 
 /* The team section */
 #about {
-    background-color: white;
-    border-bottom: 10px solid #70026D;
-    color: black;
+    background-color: #005878;
+    /*border-bottom: 10px solid #70026D;*/
+    color: white;
+}
+
+#team-section-header {
+    border: 3px solid white;
+    padding: 10px;
+}
+
+/* The preorder section */
+#call-to-action {
+    border: 3px solid black;
+    padding: 10px;
+}
+
+#signup-button {
+    border: 2px solid black;
+    border-radius: 0px;
+    width: 100%;
+    background-color: #F7AC16;
+}
+#signup-button:hover {
+    background-color: #F77416;
+    transition: all ease .4s;
+}
+
+.portfolio-item {
+    margin-right: 5px;
+    width: 200px;
+    height: 200px;
 }
 
 #portfolio .portfolio-item {
@@ -274,8 +367,10 @@ section.success a.active {
 .btn-outline:active,
 .btn-outline.active {
     border: solid 2px #fff;
-    color: #18bc9c;
-    background: #fff;
+    /*background: #fff;*/
+
+    background: #70026D;
+    color: #F7AC16;
 }
 
 .floating-label-form-group {
@@ -345,25 +440,19 @@ footer h3 {
 /* The contact info section */
 footer .footer-above {
     padding-top: 50px;
-    background-color: #005878;
+    background-color: #282828;
 }
 
 footer .footer-col {
     margin-bottom: 50px;
 }
 
-/* The copyright section */
-footer .footer-below {
-    padding: 25px 0;
-    background-color: #70026D;  /* purple - brighter: #910E63*/
-}
-
 .btn-social {
     display: inline-block;
     width: 50px;
     height: 50px;
-    border: 2px solid #fff;
-    border-radius: 100%;
+    border: 3px solid #fff;
+    /*border-radius: 100%;*/
     text-align: center;
     font-size: 20px;
     line-height: 45px;

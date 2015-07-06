@@ -35,7 +35,7 @@ $(document).ready(function () {
 				.attr("width", tab.length)
 				.attr("height", tab.width)
 				.attr("rx", 23).attr("ry", 23)
-				.style("fill", "white")
+				.style("fill", "black")
 				.style("stroke", "grey")
 				.style("stroke-width", 2);
 		
@@ -46,7 +46,7 @@ $(document).ready(function () {
 					.attr("width", tab.length - (tab.padding * 2))
 					.attr("height", tab.width - (tab.padding * 2))
 					.style("fill", "white")
-					//.style("fill", "#282828")
+					.style("fill", "#282828")
 					.style("stroke", "grey")
 					.style("stroke-width", 2);
 		
@@ -56,7 +56,7 @@ $(document).ready(function () {
 		tab.button = svg.append("ellipse")
 					.attr("cx", button_x).attr("cy", button_y)
 					.attr("rx", 10).attr("ry", 10)
-					.style("fill", "white")
+					.style("fill", "black")
 					.style("stroke", "grey")
 					.style("stroke-width", 2);
 		return tab;

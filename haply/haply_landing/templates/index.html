@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top"> Haply </a>
+                <a class="navbar-brand" href="#page-top"> <div id="haply-title">Haply</div> </a>
             </div>
 
             <!-- The toggle content -->
@@ -55,13 +55,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">The Technology</a>
+                        <a href="#portfolio" id="technology">The Technology</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">The Team</a>
-                    </li>
+                        <a href="#about" id="team">The Team</a>
+                    </li>   
                     <li class="page-scroll">
-                        <a href="#contact" id="preorder">Preorder</a>
+                        <a href="#contact" id="preorder">Pre-order</a>
                     </li>
                 </ul>
             </div>
@@ -74,14 +74,15 @@
     <header>
         <div class="container" id="demo">
             <div class="row">
-                <div class="col-lg-8">
-                    <!-- Where the SVG will be appended --> 
+                <!-- Where the SVG will be appended --> 
+                <div class="demo"></div>
+               <!--  <div class="col-lg-8">
                     <div class="demo"></div>
-                </div>
-                <div class="col-lg-4">
+                </div> -->
+               <!--  <div class="col-lg-4" id="pitch-panel">
                     <div class="pitch" id="pitch-1">Rediscover the sense of</div>
                     <div class="pitch" id="pitch-2"><b><u id="touch">touch</u></b></div>
-                </div>
+                </div> -->
             </div>
         </div>
     </header>
@@ -90,10 +91,13 @@
     <section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>The Technology</h2>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                    <h2 id="tech-section-header">The Technology</h2>
                 </div>
+                <div class="col-lg-2"></div>
             </div>
+            <br> 
              <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
                     <p>Paragraph about haptic technology. </p>
@@ -105,51 +109,22 @@
         </div>
     </section>
 
-    <!-- The team section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>The Team</h2>
-                </div>
-            </div>
-            <br>
-            <div class="col-sm-3 portfolio-item">
-                <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                    <img src="{{ STATIC_URL }}img/portfolio/circus.png" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3 portfolio-item">
-                <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                    <img src="{{ STATIC_URL }}img/portfolio/game.png" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3 portfolio-item">
-                <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                    <img src="{{ STATIC_URL }}img/portfolio/safe.png" class="img-responsive" alt="">
-                </a>
-            </div>
-            <div class="col-sm-3 portfolio-item">
-                <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                    <img src="{{ STATIC_URL }}img/portfolio/submarine.png" class="img-responsive" alt="">
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact/beta test section -->
     <section id="contact">
         <div class="container">
+            <!-- Preorder call to action! --> 
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Contact Us!</h2>
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                    <h2 id="call-to-action">Pre-order your Haplet</h2>
                 </div>
+                <div class="col-lg-2"></div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <p>We want you, a tech enthusiast and maker, to play with our product! (Description of what a beta tester would do -- or potentially make this an interactive quiz-type thing.) </p>
+                    <p>This is where a call-to-action type paragraph should go, compelling the user to fill in their information. It should also contain a description of the hapkit. </p>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -190,11 +165,70 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Sign me up!</button>
+                                <button type="submit" class="btn btn-success btn-lg" id="signup-button">Sign me up!</button>
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- The team section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 text-center">
+                    <h2 id="team-section-header">The Team</h2> <br>
+                    <p> This is where the general team description should go. </p>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <br>
+            <div class="col-sm-3" id="colin">
+                <div class="member-description" id="colin-description">
+                    <div class="member-description-text">
+                        <p>Colin Gallacher, Co-founder</p>
+                        <p>Masters Robotics</p>
+                        <p>McGill University</p>
+                    </div>
+                </div>
+                <img src="{{ STATIC_URL }}img/colin-vect.png" class="img-responsive" id="colin-pic" alt="">
+                <!-- <div class="member-name">Colin Gallacher, Co-founder</div> -->
+            </div>
+            <div class="col-sm-3" id="arash">
+                <div class="member-description" id="arash-description">
+                    <div class="member-description-text">
+                        <p>Arash Mohtat, Co-founder</p>
+                        <p>PhD Haptics</p>
+                        <p>McGill University</p>
+                    </div>
+                </div>
+                <img src="{{ STATIC_URL }}img/arash-vect.png" class="img-responsive" id="arash-pic" alt="">
+                <!-- <div class="member-name">Arash Mohtat, Co-founder</div> -->
+            </div>
+            <div class="col-sm-3" id="morgane">
+                <div class="member-description" id="morg-description">
+                    <div class="member-description-text">
+                        <p>Morgane Ciot, Co-founder</p>
+                        <p>BS Computer Science</p>
+                        <p>McGill University</p>
+                    </div>
+                </div>
+                <img src="{{ STATIC_URL }}img/morgane-vect.png" class="img-responsive" id="morg-pic" alt="">
+                <!-- <div class="member-name">Morgane Ciot, Co-founder</div> -->
+            </div>
+            <div class="col-sm-3" id="steve">
+                <div class="member-description" id="steve-description">
+                    <div class="member-description-text">
+                        <p>Steve Ding, Co-founder</p>
+                        <p>Masters Electrical Engineering</p>
+                        <p>McGill University</p>
+                    </div>
+                </div>
+                <img src="{{ STATIC_URL }}img/steve-vect.png" class="img-responsive" id="steve-pic" alt="">
+                <!-- <div class="member-name">Steve Ding, Co-founder</div> -->
             </div>
         </div>
     </section>
@@ -206,8 +240,7 @@
                 <div class="row">
                     <div class="footer-col col-md-4"></div>
                     <div class="footer-col col-md-4">
-                        <h3>We are in Montreal </h3>
-                        <h3> and </h3>
+                        <h5>We are in Montreal and:</h5>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -215,16 +248,13 @@
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
                         </ul>
                     </div>
                     <div class="footer-col col-md-4"></div>
                 </div>
             </div>
         </div>
-        <div class="footer-below">
+        <!-- <div class="footer-below">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -232,7 +262,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </footer>
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
@@ -264,6 +294,24 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ STATIC_URL }}js/freelancer.js"></script>
+
+    <!-- Team member hover --> 
+    <!-- This is bad, should just do this with css but wasn't working --> 
+    <script type="text/javascript">
+        // Get the id of the description div 
+        var description_id = function (obj) {
+           return "#" + $(obj).attr("id").split("-")[0] + "-description"; 
+        };
+
+        // Show the team member's description 
+        $(".img-responsive").hover(function () {
+            $(description_id(this)).show();
+        });
+        // Hide the team member's description
+        $(".member-description").mouseout(function () {
+           $(description_id(this)).hide();
+        });
+    </script>
 
 </body>
 
