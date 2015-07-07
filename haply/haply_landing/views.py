@@ -30,7 +30,11 @@ def bye(request):
 		f.close()
 
 		# Send me and them an email 
-		body = "Test"
+		body = "Hi " + str(name.split()[0]) + "!\n\n"
+		body += "Thank you for signing up to pre-order the Haplet! We'll send you an email once it's ready for pre-order.\n"
+		body += "Also, please fill out our short survey <<here>> - we greatly appreciate any feedback on our product. It should only take a minute.\n"
+		body += "\nThank you!\n"
+		body += "\n\nClick here to unsubscribe.\n"
 
 		message = "\r\n".join([
 		  "From:" + settings.HAPLY_EMAIL,

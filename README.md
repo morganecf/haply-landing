@@ -19,18 +19,25 @@ View at www.haply.co
 - Fix simulation modeling
 - Finish technology section 
 - CAD a model, insert picture in technology section 
-- Form functionality
-- Save form info/email functionality 
 - Thank you/confirmation email 
 - General team description 
 - Better hover transition for team members
 - Test on mobile!
 	- fix user section 
 	- fix checkbox section 
+	- goodbye page doesn't look good on screens - make fixed height/width
 - Google fonts 
 - Ask Jonathan for design advice 
+- Debug mode off 
+- Haply sending email wait modal
+- Company email 
+	- set signature
+	- change profile image 
+- Open source hardware logo
 
 - Integrate Google Analytics
+
+# https://admin.google.com/haply.co/AdminHome
 
 Survey questions: 
 - 1) Anything in your virtual world that could benefit from the sense of touch? 
