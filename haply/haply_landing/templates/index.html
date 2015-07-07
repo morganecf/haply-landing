@@ -133,39 +133,57 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    
+                    <!-- Pre-order form --> 
+                    <!-- <form name="sentMessage" id="contactForm" novalidate action="{% url 'bye' %}" method="post"> -->
+                    <form action="/bye/" method="post">
+                        {% csrf_token %}
+
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
+                               
+                               <!-- The user's name --> 
                                <!--  <label>Name</label> -->
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <input type="text" class="form-control" placeholder="Name" id="name" name="name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
+
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                               <!--  <label>Email Address</label> -->
-                                <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Please enter your email address.">
+
+                                <!-- The user's email address --> 
+                                <!--  <label>Email Address</label> -->
+                                <input type="email" class="form-control" placeholder="Email" id="email" name="email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
+
                             </div>
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
+
+                                <!-- The user's message --> 
                                 <!-- <label>Message</label> -->
-                                <textarea rows="5" class="form-control" placeholder="Comments? Questions? Please share!" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Comments? Questions? Please share!" id="message" required data-validation-required-message="Please enter a message." name="message"></textarea>
                                 <p class="help-block text-danger"></p>
+                            
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg-5"></div>
+
+                            <!-- The user's beta testing choice --> 
                             <div class="col-lg-6">
                                 <p id="interested"> I am interested in beta testing!</p>
                             </div>
                             <div class="col-lg-1">
                                 <div id="beta-check"><span class="glyphicon glyphicon-ok"></span></div>
                             </div>
+
+                            <!-- Hidden input checkbox --> 
+                            <input type="checkbox" id="actual-checkbox" name="beta" style="display:none">
+
                         </div>
                         <br>
                         <div id="success"></div>
@@ -246,7 +264,6 @@
                 <div class="row">
                     <div class="footer-col col-md-4"></div>
                     <div class="footer-col col-md-4">
-                        <h5>We are in Montreal and:</h5>
                         <ul class="list-inline">
                             <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
@@ -255,6 +272,7 @@
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                         </ul>
+                        <h5>Montreal, QC</h5>
                     </div>
                     <div class="footer-col col-md-4"></div>
                 </div>
@@ -269,27 +287,26 @@
         </a>
     </div>
 
-    <!-- jQuery -->
+    <!-- jquery -->
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    <!-- bootstrap -->
     <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
+    <!-- javascript plugin for header animation -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="{{ STATIC_URL }}js/classie.js"></script>
     <script src="{{ STATIC_URL }}js/cbpAnimatedHeader.js"></script>
 
-    <!-- Ball demo javascript --> 
+    <!-- ball demo --> 
     <script src="{{ STATIC_URL }}js/jquery-1.11.3.min.js"></script>
     <script src="{{ STATIC_URL }}js/d3.min.js"></script>
     <script src="{{ STATIC_URL }}js/ball_demo.js"></script>
 
-    <!-- Contact Form JavaScript -->
+    <!-- contact form validation and ajax -->
     <script src="{{ STATIC_URL }}js/jqBootstrapValidation.js"></script>
-    <script src="{{ STATIC_URL }}js/contact_me.js"></script>
 
-    <!-- Custom Theme JavaScript -->
+    <!-- custom theme javascript -->
     <script src="{{ STATIC_URL }}js/freelancer.js"></script>
 
     <!-- Team member hover and checkbox functionality --> 
@@ -318,17 +335,16 @@
         $("#beta-check").click(function () {
             // Uncheck 
             if (checked) {
-                //$(".glyphicon-ok").first().hide();
                 checked = false;
                 $(".glyphicon-ok").removeClass("ok-active");
             }
 
             // Check
             else {
-                //$(".glyphicon-ok").first().show();
                 checked = true;
                 $(".glyphicon-ok").addClass("ok-active");
             }
+            $("#actual-checkbox").click();
         });
 
     </script>
