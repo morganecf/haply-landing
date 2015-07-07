@@ -149,16 +149,16 @@ $(document).ready(function () {
 		var hap = {};
 		
 		// Position and size variables 
-		hap.arm_size = 185;
+		hap.arm_size = 220;
 		hap.mid = mid = tablet.top.x + (tablet.length / 2);
-		var gap = 50, top_offset = 14;
+		var gap = 120, top_offset = 14;
 		var axis_length = (Math.sqrt(Math.pow(hap.arm_size, 2) - Math.pow(gap, 2))) * 2;
 		hap.start_pos = {x: mid, y: tablet.top.y + top_offset};
 		hap.bottom_pos = {x: mid, y: hap.start_pos.y + axis_length};
 		
 		// Where the joints will be 
-		var joint1 = {x: hap.start_pos.x - gap, y: hap.start_pos.y + hap.arm_size};
-		var joint2 = {x: hap.start_pos.x + gap, y: hap.start_pos.y + hap.arm_size};
+		var joint1 = {x: hap.start_pos.x - gap, y: hap.start_pos.y + hap.arm_size - 20};
+		var joint2 = {x: hap.start_pos.x + gap, y: hap.start_pos.y + hap.arm_size - 20};
 		
 		// Draw the arms
 		hap.arm1 = svg.append("line")
@@ -225,33 +225,75 @@ $(document).ready(function () {
 	
 	// Derive the x, y coordinates of where the joint should now be at after rotation
 	// given the position of the stylus 
-	var joint_point = function (pos, side) {
-		// The distance in x direction between y-axis and stylus pos 
-		var x_dist = 1.0 * Math.abs(haplet.mid - pos.x);
-		// The distance in the y direction between stylus pos and top 
-		var y_dist = 1.0 * Math.abs(haplet.start_pos.y - pos.y);
+	// var joint_point = function (pos, side) {
+	// 	// The distance in x direction between y-axis and stylus pos 
+	// 	var x_dist = 1.0 * Math.abs(haplet.mid - pos.x);
+	// 	// The distance in the y direction between stylus pos and top 
+	// 	var y_dist = 1.0 * Math.abs(haplet.start_pos.y - pos.y);
 
-		// Find the angle between the y-axis and the joint axis 
-		var theta = Math.tan(x_dist / y_dist);
+	// 	// Find the angle between the y-axis and the joint axis 
+	// 	var theta = Math.tan(x_dist / y_dist);
 
-		// The length of the device axis 
-		var axis = Math.sqrt(Math.pow(x_dist, 2) + Math.pow(y_dist, 2));
+	// 	// The length of the device axis 
+	// 	var axis = Math.sqrt(Math.pow(x_dist, 2) + Math.pow(y_dist, 2));
 
-		// Find the angle between the device axis and the second arm 
-		var alpha = Math.sin((axis / 2.0) / haplet.arm_size);
-		// And the complementary angle thing
-		var beta = theta - alpha;
+	// 	// Find the angle between the device axis and the second arm 
+	// 	var alpha = Math.sin((axis / 2.0) / haplet.arm_size);
+	// 	// And the complementary angle thing
+	// 	var beta = theta - alpha;
 
-		// Now we can find the joint position 
-		var x_displacement = haplet.arm_size * Math.sin(beta);
-		var y_displacement = haplet.arm_size * Math.cos(beta);
+	// 	// Now we can find the joint position 
+	// 	var x_displacement = haplet.arm_size * Math.sin(beta);
+	// 	var y_displacement = haplet.arm_size * Math.cos(beta);
 
-		if (side == "left")
-			var new_pos = {x: pos.x - x_displacement, y: pos.y - y_displacement};
-		else
-			var new_pos = {x: pos.x + x_displacement, y: pos.y - y_displacement};
+	// 	if (side == "left")
+	// 		var new_pos = {x: pos.x - x_displacement, y: pos.y - y_displacement};
+	// 	else
+	// 		var new_pos = {x: pos.x + x_displacement, y: pos.y - y_displacement};
 
-		return new_pos;
+	// 	return new_pos;
+	// };
+
+	var joint_point = function (pos, arm) {
+		var x = pos.x - haplet.start_pos.x;
+		var y = pos.y - haplet.start_pos.y;
+
+		// If x is negative, flip to get the correct displacement
+		var neg = false;
+		if (x < 0) {
+			neg = true;
+			x = -1 * x;
+		}
+
+		// Math stuff 
+		var t1 = Math.atan(y / x);
+		var a = x / Math.cos(t1);
+
+		var cos_arg = Math.abs(a / (2 * haplet.arm_size));
+		if (cos_arg > 1) cos_arg = 1;
+		else if (cos_arg < -1) cos_arg = -1;
+
+		var t2 = Math.acos(cos_arg);
+
+		var theta1 = t1 - t2;
+		var theta2 = t1 + t2;
+
+		// Find the displacement in the x and y direction
+		if (arm === "left") {
+			var run = haplet.arm_size * Math.cos(theta1);
+			var rise = haplet.arm_size * Math.sin(theta1);
+		}
+		else {
+			var run = haplet.arm_size * Math.cos(theta2);
+			var rise = haplet.arm_size * Math.sin(theta2);
+		}
+
+		// Find the joint x,y coordinates 
+		if (neg) var new_x = haplet.start_pos.x - run;
+		else var new_x = haplet.start_pos.x + run;
+		var new_y = haplet.start_pos.y + rise;
+
+		return {x: new_x, y: new_y};
 	};
 
 	// True if we're in the tablet frame 
@@ -265,9 +307,9 @@ $(document).ready(function () {
 		return in_x && in_y;
 	};
 
-	// True if we're below the halfway point
-	var below_half = function (coords) {
-		return coords[1] >= tablet.top.y + (tablet.width / 2);
+	// True if we're below the point we don't want to be above...
+	var below = function (coords) {
+		return coords[1] >= tablet.top.y + (tablet.width / 6);
 	};
 
 	d3.select("#svg-canvas").on("mousemove", function (event) {
@@ -276,16 +318,11 @@ $(document).ready(function () {
 		var coords = d3.mouse(this);
 
 		// Don't move past the halfway line 
-		if (moving && in_tablet(coords) && below_half(coords)) {
+		if (moving && in_tablet(coords) && below(coords)) {
 			// Move the stylus
 			haplet.stylus.attr("cx", coords[0]);
 			haplet.stylus.attr("cy", coords[1]);
 
-			// Get the top to bottom length
-			//var l = coords[1] - tablet.top.y;
-			// Calculate the length-wise distance the joint must move
-			//var d = joint_dist(l);
-			
 			var top_joint_pos = joint_point({x: coords[0], y: coords[1]}, "left");
 			var bottom_joint_pos = joint_point({x: coords[0], y: coords[1]}, "right");
 			
@@ -294,6 +331,7 @@ $(document).ready(function () {
 			haplet.arm1.attr("y2", top_joint_pos.y);
 			haplet.arm3.attr("x1", top_joint_pos.x);
 			haplet.arm3.attr("y1", top_joint_pos.y);
+
 			haplet.arm2.attr("x2", bottom_joint_pos.x);
 			haplet.arm2.attr("y2", bottom_joint_pos.y);
 			haplet.arm4.attr("x1", bottom_joint_pos.x);
@@ -305,18 +343,7 @@ $(document).ready(function () {
 			haplet.arm4.attr("x2", coords[0]);
 			haplet.arm4.attr("y2", coords[1]);
 			
-			// // Move the joints 
-			// haplet.arm1.attr("x2", haplet.mid - d);
-			// haplet.arm2.attr("x2", haplet.mid + d);
-			// haplet.arm3.attr("x1", haplet.mid - d);
-			// haplet.arm4.attr("x1", haplet.mid + d);
-			// // Move the tip of the arms 
-			// haplet.arm3.attr("x2", coords[0]);
-			// haplet.arm4.attr("x2", coords[0]);
-			// haplet.arm3.attr("y2", coords[1]);
-			// haplet.arm4.attr("y2", coords[1]);
 			// Move the balls 
-		  	
 		  	balls.root.px = coords[0];
 		  	balls.root.py = coords[1];
 		  	balls.force.resume();
@@ -326,6 +353,5 @@ $(document).ready(function () {
 	// Mouse up event listener - stop moving
 	d3.select("#svg-canvas").on("mouseup", function () {
 		moving = false;
-		// Gracefully return to starting position 
 	});
 });
