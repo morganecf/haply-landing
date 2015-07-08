@@ -8,12 +8,11 @@ View at www.haply.co
 
 
 ### TODO ###
-- Finish descriptions 
+- Finish haplet kit descriptions 
 - Finish technology section 
-- Finish team section 
 - Survey 
-- darker form fields
-- indicate which section we're in
+- Darker form fields
+- Indicate which section we're in
 
 - Test on mobile!
 	- make sure animation works 
