@@ -164,7 +164,7 @@
 
                                 <!-- The user's message --> 
                                 <!-- <label>Message</label> -->
-                                <textarea rows="5" class="form-control" placeholder="Comments? Questions? Please share!" id="message" required data-validation-required-message="Please enter a message." name="message"></textarea>
+                                <textarea rows="5" class="form-control" placeholder="Comments? Questions? Please share!" id="message" data-validation-required-message="Please enter a message." name="message"></textarea>
                                 <p class="help-block text-danger"></p>
                             
                             </div>
@@ -212,44 +212,40 @@
             <br>
             <div class="col-sm-3" id="colin">
                 <div class="member-description" id="colin-description">
-                    <div class="member-description-text">
-                        <p>Colin Gallacher, Co-founder</p>
-                        <p>Masters Robotics</p>
-                        <p>McGill University</p>
-                    </div>
+                    <br class="description-break">
+                    Colin Gallacher, Co-founder<br>
+                    Masters Robotics<br>
+                    McGill University
                 </div>
                 <img src="{{ STATIC_URL }}img/colin-vect.png" class="img-responsive" id="colin-pic" alt="">
                 <!-- <div class="member-name">Colin Gallacher, Co-founder</div> -->
             </div>
             <div class="col-sm-3" id="arash">
                 <div class="member-description" id="arash-description">
-                    <div class="member-description-text">
-                        <p>Arash Mohtat, Co-founder</p>
-                        <p>PhD Haptics</p>
-                        <p>McGill University</p>
-                    </div>
+                    <br class="description-break">
+                    Arash Mohtat, Co-founder<br>
+                    PhD Haptics<br>
+                    McGill University
                 </div>
                 <img src="{{ STATIC_URL }}img/arash-vect.png" class="img-responsive" id="arash-pic" alt="">
                 <!-- <div class="member-name">Arash Mohtat, Co-founder</div> -->
             </div>
             <div class="col-sm-3" id="morgane">
                 <div class="member-description" id="morg-description">
-                    <div class="member-description-text">
-                        <p>Morgane Ciot, Co-founder</p>
-                        <p>BA&amp;S Computer Science</p>
-                        <p>McGill University</p>
-                    </div>
+                    <br class="description-break">
+                        Morgane Ciot, Co-founder<br>
+                        BA&amp;S Computer Science<br>
+                        McGill University
                 </div>
                 <img src="{{ STATIC_URL }}img/morg-vector.png" class="img-responsive" id="morg-pic" alt="">
                 <!-- <div class="member-name">Morgane Ciot, Co-founder</div> -->
             </div>
             <div class="col-sm-3" id="steve">
                 <div class="member-description" id="steve-description">
-                    <div class="member-description-text">
-                        <p>Steve Ding, Co-founder</p>
-                        <p>Masters Electrical Engineering</p>
-                        <p>McGill University</p>
-                    </div>
+                    <br class="description-break">
+                    Steve Ding, Co-founder<br>
+                    Masters Electrical Engineering<br>
+                    McGill University
                 </div>
                 <img src="{{ STATIC_URL }}img/steve-vect.png" class="img-responsive" id="steve-pic" alt="">
                 <!-- <div class="member-name">Steve Ding, Co-founder</div> -->
@@ -322,15 +318,14 @@
 
         // Show the team member's description 
         $(".img-responsive").hover(function () {
-            $(description_id(this)).show();
+            $(description_id(this)).fadeIn("slow");
         });
         // Hide the team member's description
         $(".member-description").mouseout(function () {
-           $(description_id(this)).hide();
+           $(description_id(this)).fadeOut("slow");
         });
 
         /* Checkbox functionality */
-
         var checked = false;
         $("#beta-check").click(function () {
             // Uncheck 
