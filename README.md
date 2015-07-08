@@ -8,15 +8,15 @@ View at www.haply.co
 
 
 ### TODO ###
-- Fix simulation modeling
 - Finish descriptions 
 - Finish technology section 
 - Finish team section 
 - Survey 
-- Make sure message is optional 
-- Make sure highlight section doesn't appear 
+- darker form fields
+- indicate which section we're in
 
 - Test on mobile!
+	- make sure animation works 
 	- fix user section 
 	- fix checkbox section 
 	- goodbye page doesn't look good on screens - make fixed height/width
@@ -28,11 +28,11 @@ View at www.haply.co
 - Logo (with shading)
 - Add logo to front page 
 - Add logo to goodbye page 
+- Implement nice scrolling to different sections
 - Logo animation (squeeze up and down)
-- angellist icon 
-- make sure animation works on mobile 
+- angellist icon
+- Change body colors from #2c3e50 to...grey? 
 - CAD a model, insert picture in technology section 
-- Better hover transition for team members
 
 - Google fonts 
 - Company email 
