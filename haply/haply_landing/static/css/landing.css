@@ -93,6 +93,47 @@ header .intro-text .skills {
     font-weight: 100;
 }
 
+.member-description-mobile {
+    display: none;
+}
+
+/* Make sure images and their descriptions resize and align properly */
+@media(max-width:768px) {
+     /* Make sure there's some space between the demo and the header */
+    .demo {
+        padding-top: 50px;
+    }
+    /* For the team member images */
+    .img-responsive {
+        margin-bottom: 50px;
+        margin: 0 auto;
+    }
+    .member-description {
+        z-index: -5;
+    }
+    .member-description-mobile {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+        /*background: black;*/
+        /*width: 230px;*/
+    }
+}
+
+@media(max-width:1200px) {
+    .member-description {
+        width: 205px;
+    }
+    .description-break {
+        margin-top: -20px;
+    }
+}
+@media(max-width:986px) {
+    .member-description {
+        width: 150px;
+        font-size: 15px;
+    }
+}
 
 @media(min-width:768px) {
     header .container {
@@ -208,6 +249,14 @@ section.success a.active {
     border-bottom: 5px solid black;
     opacity: 0.7;
 }
+/*#haply-logo {
+    margin-left: -120px;
+    margin-top: -15px;
+}
+#haply-title {
+    margin-top: -70px;
+    margin-left: -20px;
+}*/
 #haply-title, #technology, #team, #preorder {
     color: black;
 }
@@ -279,7 +328,10 @@ section.success a.active {
     background-color: #F77416;
     transition: all ease .4s;
 }
-#interested {
+/*#interested {
+    text-align: right;
+}*/
+#interested, #beta-check {
     text-align: right;
 }
 #beta-check {
@@ -287,6 +339,7 @@ section.success a.active {
     height: 30px;
     border: 3px solid #282828;
     position: absolute;
+ /*   margin-left: 30px;*/
 }
 .glyphicon-ok {
     display: none;
@@ -296,6 +349,19 @@ section.success a.active {
     font-size: 30px;
     margin-top: -6px;
     margin-left: -2px;
+}
+
+/* Media query to align the checkbox */
+@media(max-width:760px) {
+    #interested {
+        text-align: left;
+        color: red;
+    }
+    #beta-check {
+        text-align: right;
+        background-color: red;
+        position: relative;
+    }
 }
 
 
