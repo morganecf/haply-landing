@@ -51,7 +51,7 @@ $(document).ready(function () {
 					.style("stroke-width", 2);
 		
 		// On button 
-		var button_x = tab.top.x + 15;
+		var button_x = tab.top.x + 17;
 		var button_y = tab.width / 2 + 30;
 		tab.button = svg.append("ellipse")
 					.attr("cx", button_x).attr("cy", button_y)
@@ -222,37 +222,6 @@ $(document).ready(function () {
 	var joint_dist = function (x) {
 		return Math.sqrt(Math.pow(haplet.arm_size, 2) - Math.pow(x / 2.0, 2)) || 0;
 	};
-	
-	// Derive the x, y coordinates of where the joint should now be at after rotation
-	// given the position of the stylus 
-	// var joint_point = function (pos, side) {
-	// 	// The distance in x direction between y-axis and stylus pos 
-	// 	var x_dist = 1.0 * Math.abs(haplet.mid - pos.x);
-	// 	// The distance in the y direction between stylus pos and top 
-	// 	var y_dist = 1.0 * Math.abs(haplet.start_pos.y - pos.y);
-
-	// 	// Find the angle between the y-axis and the joint axis 
-	// 	var theta = Math.tan(x_dist / y_dist);
-
-	// 	// The length of the device axis 
-	// 	var axis = Math.sqrt(Math.pow(x_dist, 2) + Math.pow(y_dist, 2));
-
-	// 	// Find the angle between the device axis and the second arm 
-	// 	var alpha = Math.sin((axis / 2.0) / haplet.arm_size);
-	// 	// And the complementary angle thing
-	// 	var beta = theta - alpha;
-
-	// 	// Now we can find the joint position 
-	// 	var x_displacement = haplet.arm_size * Math.sin(beta);
-	// 	var y_displacement = haplet.arm_size * Math.cos(beta);
-
-	// 	if (side == "left")
-	// 		var new_pos = {x: pos.x - x_displacement, y: pos.y - y_displacement};
-	// 	else
-	// 		var new_pos = {x: pos.x + x_displacement, y: pos.y - y_displacement};
-
-	// 	return new_pos;
-	// };
 
 	var joint_point = function (pos, arm) {
 		var x = pos.x - haplet.start_pos.x;
