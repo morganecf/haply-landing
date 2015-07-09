@@ -8,7 +8,7 @@ $(document).ready(function () {
 	var width = 800, height = 500;
 
 	// This will let us know if the user is moving the stylus around
-	var moving = false;
+	//var moving = false;
 	
 	// The svg canvas we'll be using 
 	var svg = d3.selectAll("div.demo").append("svg")
@@ -192,11 +192,11 @@ $(document).ready(function () {
 					.style("stroke", "grey")
 					.style("stroke-width", 2)
 					.style("fill", "#DCDCDC")
-					.style("opacity", 0.7)
+					.style("opacity", 0.7);
 					// We can now move the stylus around 
-					.on("mousedown", function () {
-						moving = true;
-					});
+					// .on("mousedown", function () {
+					// 	moving = true;
+					// });
 
 		/* Style the components */
 
@@ -318,7 +318,7 @@ $(document).ready(function () {
 		var coords = d3.mouse(this);
 
 		// Don't move past the halfway line 
-		if (moving && in_tablet(coords) && below(coords)) {
+		if (in_tablet(coords) && below(coords)) {
 			// Move the stylus
 			haplet.stylus.attr("cx", coords[0]);
 			haplet.stylus.attr("cy", coords[1]);
@@ -351,7 +351,7 @@ $(document).ready(function () {
 	});
 
 	// Mouse up event listener - stop moving
-	d3.select("#svg-canvas").on("mouseup", function () {
-		moving = false;
-	});
+	// d3.select("#svg-canvas").on("mouseup", function () {
+	// 	moving = false;
+	// });
 });
