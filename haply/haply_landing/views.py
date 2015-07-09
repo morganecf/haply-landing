@@ -13,11 +13,11 @@ def bye(request):
 		name = request.POST.get('name')
 		email = request.POST.get('email')
 		message = request.POST.get('message')
-		beta = request.POST.get('beta') or 'no'
+		#beta = request.POST.get('beta') or 'no'
 
 		# If they want to beta test or not 
-		if beta and beta == 'on':
-			beta = 'yes' 
+		# if beta and beta == 'on':
+		# 	beta = 'yes' 
 
 		# Save to a text file on the server 
 		fname = '_'.join(name.split()) + '.txt'
@@ -26,15 +26,16 @@ def bye(request):
 		f.write('Name: ' + str(name) + '\n')
 		f.write('Email: ' + str(email) + '\n')
 		f.write('Message: ' + str(message) + '\n')
-		f.write('Wants to beta test? ' + beta + '\n')
+		#f.write('Wants to beta test? ' + beta + '\n')
 		f.close()
 
 		# Send me and them an email 
 		body = "Hi " + str(name.split()[0]) + "!\n\n"
 		body += "Thank you for signing up to pre-order the Haplet! We'll send you an email once it's ready for pre-order.\n"
-		body += "Also, please fill out our short survey <<here>> - we greatly appreciate any feedback on our product. It should only take a minute.\n"
+		body += "Also, please fill out our short survey - we greatly appreciate any feedback on our product. It should only take a minute.\n"
+
 		body += "\nThank you!\n"
-		body += "\n\nClick here to unsubscribe.\n"
+		#body += "\n\nEmail us back with 'unsubscribe' if you don't want to receive any more emails from us.\n"
 
 		message = "\r\n".join([
 		  "From:" + settings.HAPLY_EMAIL,
@@ -57,3 +58,6 @@ def bye(request):
 # To view the simulation
 def simulation(request):
 	return render(request, 'ball-test.html')
+
+def brochure(request):
+	return render(request, 'brochure.html')
