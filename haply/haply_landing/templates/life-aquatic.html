@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+  <head>
+
+  <style> 
+    body {
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+    #canvas {
+      margin: -10px -10px -10px -10px;
+      position: absolute;
+      z-index: 3;
+      margin-bottom: -10px;
+    }
+    .ripple-wrap {
+      position: relative;
+      margin: -10px -10px
+    }
+    .ripple-wrap canvas {
+      position: absolute;
+      z-index: 1;
+    }
+  </style>
+
+  <script src="{{STATIC_URL}}startupfair-demo/jquery.min.js"></script>
+  <script src="{{STATIC_URL}}startupfair-demo/paper.min.js"></script>
+  <script src="{{STATIC_URL}}js/ripple.js"></script>
+  <script type="text/paperscript" canvas="canvas">
+
+    // Helper function to return a random number between two numbers
+    var random = function (a, b) { 
+      return a + (Math.random() * (b - a)); 
+    };
+
+    // Helper function to return min of two numbers
+    var min = function (a, b) {
+      if (a < b) return a;
+      else return b;
+    };
+
+    // Solve for y given circle radius and x 
+    var circle_y = function (x, rad) { return Math.sqrt(Math.pow(rad, 2) - Math.pow(x, 2)); };
+
+    var bubble_colors = ['#E2FFE6', '#DDFEFE', '#DEF6FD', '#FAECFF'];
+
+    // Function to create a bubble 
+    var bubble = function (pos, size) {
+      var b = new Path.Circle(pos, size);
+      b.strokeColor = bubble_colors[Math.floor(Math.random() * bubble_colors.length)];
+      b.strokeWidth = Math.ceil(1 + Math.random() * 4);
+      b.opacity = 0.1 + Math.random();
+      return b;
+    };
+
+    // Function to add a layer of bubbles 
+    var add_bubbles = function (n, width, height) {
+      var bubbles = [];
+      var pos, rad, bub;
+      for (var i = 0; i < n; i++) {
+        pos = new Point(Math.random() * width, Math.random() * height);
+        rad = Math.random() * 10;
+        bub = bubble(pos, rad);
+        bubbles.push(bub);
+      }
+      return bubbles;
+    };
+
+    // Function to animate a layer of bubbles
+    var animate_bubbles = function (bubbles, step, width) { 
+      for (var i = 0; i < bubbles.length; i++) {
+        // reset if needed 
+        if (bubbles[i].position.x > width) bubbles[i].position.x = 0;
+        // otherwise move bubble 
+        else bubbles[i].position.x += step;
+      }
+    };
+
+    // Function to add a sand layer
+    var add_sand = function (width, height) {
+        var path = new Path();
+        path.add(new Point(0, height)); 
+        // Slope down 
+        path.add(new Point(0, height - 100));
+        path.add(new Point(400, height - 80));
+        // Slope up again 
+        path.add(new Point(500, height - 50));
+        path.add(new Point(600, height - 80));
+        // Slope back down to the end 
+        path.add(new Point(width, height));
+
+        path.fillColor = 'beige';
+
+        path.smooth();
+    };
+
+    // Function to add an urchin at a certain start point
+    var draw_urchin = function (x, y, radius) {
+        var base_seg = new Path(new Point(x, y), new Point(x, y + radius));
+        var urchin_segments = [base_seg];
+
+        // The body is comprised of spindly things of varying length
+        for (var i = 1; i <= 240; i++) {
+            urchin_segments.push(base_seg.clone().rotate(i * 7).scale(random(.2, 1.8)));
+        }
+        var body = new Group({
+          children: urchin_segments,
+          strokeColor: 'black',
+          strokeWidth: 1
+        });
+
+        // The urchin's eyes
+        var eye1 = new Path.Circle(new Point(body.position.x - 3, body.position.y), 5);
+        var eye2 = new Path.Circle(new Point(body.position.x + 3, body.position.y), 5);
+        var eyes = new Group({
+          children: [eye1, eye2],
+          fillColor: 'white'
+        });
+        var eyeball1 = new Path.Circle(eye1.position, 2);
+        var eyeball2 = new Path.Circle(eye2.position, 2);
+        var eyeballs = new Group({
+          children: [eyeball1, eyeball2],
+          fillColor: 'black'
+        });
+
+        var urchin = new Group({children: [body, eyes, eyeballs]});
+        
+        return {group: urchin, eyes: eyeballs};
+    };
+
+    /* Running the slingshot simulation */
+    $(document).ready(function () {
+
+          // Get the device size 
+          var width = $(window).width();
+          var height = $(window).height();
+
+          // Set the canvas to the device size 
+          $("#canvas").attr("width", width);
+          $("#canvas").attr("height", height);
+
+          // Set the background to the device size
+          // $("#background").attr("width", width);
+          // $("#background").attr("height", height);
+
+          // Add 120 bubbles total 
+          // var bubble_layer1 = add_bubbles(120, width, height);
+          // var bubble_layer2 = add_bubbles(120, width, height);
+          //var bubble_layer = add_bubbles(20, width, height);
+          // Bubble animation interval
+          // setInterval(function () {
+          //     animate_bubbles(bubble_layer, 1, width);
+          //     view.draw();
+          // }, 100);
+
+          // // Add a layer of sand 
+          // var sand = add_sand(width, height);
+
+          // // Add the treasure chest 
+          // project.importSVG("/static/startupfair-demo/treasure-chest.svg");
+
+          // // Add the boulders 
+          // project.importSVG("/static/startupfair-demo/boulders.svg");
+
+          view.draw();
+
+          // When the user first clicks, urchin appears
+          var urchin_radius = 30;
+          var urchin = draw_urchin(width / 2, height - 100, urchin_radius);
+
+          $("#canvas").on("mousemove", function (event) {
+              urchin.group.position.x = event.pageX;
+              urchin.group.position.y = event.pageY;
+          });
+
+          // Make the urchin's eyes blink 
+          // setInterval(function () {
+          //   urchin.eyes.fillColor = 'black';
+          //   setTimeout(function () {  
+          //     urchin.eyes.fillColor = 'white';
+          //   }, 200);
+          // }, 5000);
+
+    });
+
+  </script>
+
+</head>
+
+<body>
+	<canvas id="canvas" width="1400" height="800" keepalive="true"></canvas>
+  <div class="ripple-wrap">
+    <img id="background" src="/static/img/lifeaquatic-background-bubbles2.png" onload="waterRipple(this);" />
+  </div>
+</body>
+
+</html>

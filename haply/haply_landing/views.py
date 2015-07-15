@@ -59,5 +59,15 @@ def bye(request):
 def simulation(request):
 	return render(request, 'ball-test.html')
 
+# To view our brochure
 def brochure(request):
 	return render(request, 'brochure.html')
+
+# To view the startup fair demo
+def life_aquatic(request):
+	return render(request, 'life-aquatic.html')
+
+# To view the ripple test effect
+def ripple_test(request):
+	return render(request, 'test.html')
+
