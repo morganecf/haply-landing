@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+  <head>
+
+  <style>
+    .ripple-wrap {
+      position: relative;
+    }
+    .ripple-wrap canvas {
+      position: absolute;
+      z-index: 1;
+    }
+  </style>
+
+  <script src="{{STATIC_URL}}js/ripple.js"></script>
+
+</head>
+
+  <body>
+      <div class="ripple-wrap">
+        <img src="{{STATIC_URL}}img/ripple-test-pic.png" onload="waterRipple(this);"/>
+      </div>
+  </body>
+
+</html>

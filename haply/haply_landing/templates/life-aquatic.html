@@ -3,10 +3,10 @@
   <head>
 
   <style> 
-    body {
+    /*body {
       overflow-y: hidden;
       overflow-x: hidden;
-    }
+    }*/
     #canvas {
       margin: -10px -10px -10px -10px;
       position: absolute;
@@ -23,7 +23,8 @@
     }
   </style>
 
-  <script src="{{STATIC_URL}}startupfair-demo/jquery.min.js"></script>
+  <!--<script src="{{STATIC_URL}}startupfair-demo/jquery.min.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="{{STATIC_URL}}startupfair-demo/paper.min.js"></script>
   <script src="{{STATIC_URL}}js/ripple.js"></script>
   <script type="text/paperscript" canvas="canvas">
@@ -80,18 +81,34 @@
     var add_sand = function (width, height) {
         var path = new Path();
         path.add(new Point(0, height)); 
-        // Slope down 
-        path.add(new Point(0, height - 100));
-        path.add(new Point(400, height - 80));
-        // Slope up again 
-        path.add(new Point(500, height - 50));
-        path.add(new Point(600, height - 80));
-        // Slope back down to the end 
+        path.add(new Point(0, height - 200));
+        path.add(new Point(400, height - 180));
+        path.add(new Point(600, height - 170));
+        path.add(new Point(800, height - 190));
         path.add(new Point(width, height));
 
         path.fillColor = 'beige';
 
         path.smooth();
+    };
+
+    // Function to create coral things
+    var add_coral = function (x, y, rad, c1, c2) {
+        var circlePath = new Path.Circle(new Point(x, y), rad);
+        circlePath.strokeColor = c1;
+        circlePath.strokeWidth = 2;
+        circlePath.fillColor = c2;
+
+        var clones = 30;
+        var angle = 360 / clones;
+
+        for(var i = 0; i < clones; i++) {
+          var clonedPath = circlePath.clone();
+          clonedPath.rotate(angle * i, circlePath.bounds.topLeft);
+
+          if (i == clones - 1) clonedPath.fillColor = c1;
+        };
+
     };
 
     // Function to add an urchin at a certain start point
@@ -153,25 +170,34 @@
           //     view.draw();
           // }, 100);
 
-          // // Add a layer of sand 
-          // var sand = add_sand(width, height);
+          add_coral(width - 50, height - 20, 30, '#C6A49A', '#D68189');
+          add_coral(width - 50, height - 10, 20, '#C6E5D9', 'white');
 
-          // // Add the treasure chest 
-          // project.importSVG("/static/startupfair-demo/treasure-chest.svg");
+          // Add a layer of sand 
+          add_sand(width, height);
 
-          // // Add the boulders 
-          // project.importSVG("/static/startupfair-demo/boulders.svg");
+          // coral colors: http://www.colourlovers.com/palette/1322033/Coral_in_the_sea
+
+          add_coral(width - 100, height - 10, 10, '#FF7876', 'white');
+          add_coral(width - 120, height - 30, 10, '#FF7876', 'white');
+
+          // Add the treasure chest 
+          project.importSVG("/static/startupfair-demo/treasure-chest-simple.svg");
+
+          // Add the boulders 
+          //project.importSVG("/static/startupfair-demo/boulders.svg");
 
           view.draw();
 
           // When the user first clicks, urchin appears
-          var urchin_radius = 30;
-          var urchin = draw_urchin(width / 2, height - 100, urchin_radius);
+          var urchin_radius = 80;
+          var urchin = draw_urchin(width / 8, height - 130, urchin_radius);
 
-          $("#canvas").on("mousemove", function (event) {
-              urchin.group.position.x = event.pageX;
-              urchin.group.position.y = event.pageY;
-          });
+
+          // $("#canvas").on("mousemove", function (event) {
+          //     urchin.group.position.x = event.pageX;
+          //     urchin.group.position.y = event.pageY;
+          // });
 
           // Make the urchin's eyes blink 
           // setInterval(function () {

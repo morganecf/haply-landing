@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+
+  <style>
+    #canvas {
+      touch-action: auto !important; 
+      -webkit-user-select: auto; 
+      -webkit-user-drag: auto; 
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+  </style>
+
+  <script src="{{STATIC_URL}}startupfair-demo/jquery.min.js"></script>
+  <script src="{{STATIC_URL}}startupfair-demo/paper.min.js"></script>
+  <script type="text/paperscript" canvas="canvas">
+
+    /* Running the slingshot simulation */
+    $(document).ready(function () {
+
+          // Get the device size 
+          var width = $(window).width();
+          var height = $(window).height();
+
+          // Set the canvas to the device size 
+          $("#canvas").attr("width", width);
+          $("#canvas").attr("height", height);
+
+          var c = Path.Circle(new Point(100, 100), 10);
+          c.fillColor = 'black';
+          canvas.onmousemove = function (event) {
+            console.log("hello");
+            c.position.x = event.pageX;
+            c.position.y = event.pageY;
+            view.draw();
+          };
+
+    });
+
+  </script>
+
+</head>
+
+<body>
+	<canvas id="canvas" height="800" width="1400" keepalive="true"></canvas>
+</body>
+
+</html>

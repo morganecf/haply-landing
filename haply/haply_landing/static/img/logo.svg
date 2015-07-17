@@ -1,0 +1,29 @@
+<!-- 
+	Fill ellipse with this color: #e0d3c7 for t-shirts
+	Otherwise fill with white. 
+
+	Original dimensions
+		svg width: 640
+		svg height: 480
+	
+		rect ry, rx: 6
+		rect y, x: 79, 197
+		rect height, width: 100
+		rect stroke-width: 15
+
+		ellipse rx, ry: 13
+		ellipse cy, cx: 189, 247
+		ellipse stroke-width: 15
+ --> 
+
+<svg width="2000" height="2000" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_3">
+   <rect transform="rotate(45 247.00000000000009,128.99999999999997) " ry="20" rx="20" id="svg_1" height="1000" width="1000" y="0" x="900" stroke-width="140" stroke="#70026d" fill="none"/>
+   <ellipse ry="130" rx="130" id="svg_2" cy="1820" cx="800" stroke-linecap="null" stroke-linejoin="null" stroke-width="100" stroke="#70026d" fill="#e0d3c7"/>
+  </g>
+ </g>
+</svg>
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- bootstrap css -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- customized css -->
+    <link href="{{ STATIC_URL }}css/brochure.css" rel="stylesheet">
+
+    <!-- custom fonts -->
+    <link href="{{ STATIC_URL }}font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <style>
+        #top, #bottom {
+            width: 600px;
+        }
+        #logo-area {
+            background-color: #66236A;
+            margin-bottom: -60px;
+        }
+        #catchphrase {
+            color: white;
+        }
+        #explanation {
+            background-color: white;
+            color: #333;
+        }
+        #monitors {
+            background-color: #66236A;
+            margin-top: -80px;
+            color: white    ;
+        }
+        img {
+            margin-top: -70px;
+            margin-left: -10px;
+        }
+        #url {
+            margin-top: -80px;
+            margin-bottom: -100px;
+            margin-left: -25px;
+            color: #333;
+        }
+        #haply-logo {
+            margin-left: 10px;
+        }
+    </style>
+
+</head>
+
+
+<body id="page-top" class="index">
+
+    <!-- <div class="row" id="demo"> -->
+        <!-- Where the SVG will be appended --> 
+        <!--<div class="demo"></div>-->
+        <!-- <h4 id="catchphrase">
+            Adding touch to change the way we interact with our digital worlds -->
+            <!--<span id="haply-highlight">Haply</span> is bringing touch to your virtual world-->
+       <!--  </h4>
+    </div> -->
+    <div id="top">
+        <section id="logo-area">
+            <img src="{{STATIC_URL}}img/haply-logo3.png" id="haply-logo"/>
+        </section>
+
+        <!-- The technology/about section -->
+        <section id="explanation">
+             <div class="row brochure-info" id="info1">
+                Haptics is the science of <span class="yellow-highlight">touch</span>. When you are interacting with objects in your day-to-day life, you are applying forces to those objects, but also receiving a force back. This feedback system allows us to feel the pull of a taught bow or the weight of a caught ball. 
+                <br><br>
+                We are introducing technology that recreates this sense of touch in virtual environments, such as a game on your tablet or a surgical simulation running on your computer. Our device, called the Haplet, is the world's first device to use force-feedback haptic technology on a co-located screen, which means you can use it on any kind of screen, such as your tablet, mobile phone, or laptop screen. 
+            </div>
+            <br>
+        </section>
+    </div>
+
+    <div id="bottom">
+        <section id="monitors">
+            <div class="row brochure-info" id="mini">
+                <!-- <img src="{{STATIC_URL}}img/haplet1.png" class="happic" id="firstpic"/> 
+                <img src="{{STATIC_URL}}img/haplet2.png" class="happic"/>
+                <img src="{{STATIC_URL}}img/haplet3.png" class="happic"/> -->
+
+                <img src="{{STATIC_URL}}img/monitors.png"/>
+            </div>
+            <div class="row brochure-info" id="info2">
+                The Haplet easily clips on to the top of your tablet or computer screen. To feel objects on your screen, simply place your finger or a stylus on the small knob at the juncture of the two arms and move anywhere on the screen. You'll be able to feel objects' contours, weight, material, and the forces of your interactions with them.  
+            </div>
+        </section> 
+
+        <section>
+            <!-- Preorder call to action! --> 
+            <div class="row contact" id="url">
+                <h4>Adding touch to change the way we interact <br>with our digital worlds<br></h4>
+                <p>Visit <b>www.haply.co</b> to preorder<br></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ball demo --> 
+    <!--
+    <script src="{{ STATIC_URL }}js/jquery-1.11.3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/d3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/brochure.js"></script>
+-->
+
+
+</body>
+
+</html>

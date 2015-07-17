@@ -1,0 +1,27 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_28" transform="translate(270, 140) scale(1.7)">
+   <g id="svg_24">
+    <g id="svg_10">
+     <rect id="svg_1" height="100" width="186" y="133" x="99" stroke-width="5" stroke="#000000" fill="#7f3f00"/>
+     <rect id="svg_4" height="98" width="10" y="134" x="134" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" stroke="#000000" fill="#000000"/>
+     <rect id="svg_2" height="98" width="10" y="134" x="242" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" stroke="#000000" fill="#000000"/>
+     <rect id="svg_8" height="24" width="31" y="137" x="175" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" stroke="#000000" fill="#000000"/>
+     <rect id="svg_9" height="0" width="9" y="151" x="191" stroke-linecap="null" stroke-linejoin="null" stroke-width="5" stroke="#000000" fill="none"/>
+    </g>
+    <g id="svg_15">
+     <ellipse id="svg_13" ry="12" rx="8" cy="145" cx="190" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#d3d317" fill="#ffff00"/>
+     <ellipse id="svg_14" ry="8" rx="5" cy="146" cx="190" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#d3d317" fill="#000000"/>
+     <ellipse ry="12" rx="12" id="svg_11" cy="158.5" cx="190" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#d3d317" fill="#ffff00"/>
+    </g>
+    <g id="svg_23">
+     <rect id="svg_22" height="10" width="1" y="154" x="190" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#000000" fill="#000000"/>
+     <ellipse ry="3" rx="3" id="svg_21" cy="152" cx="190" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#000000" fill="#000000"/>
+    </g>
+   </g>
+   <ellipse transform="rotate(-8.746162414550781 215.99999999999991,251) " ry="42" rx="107" id="svg_26" cy="251" cx="216" stroke-linecap="null" stroke-linejoin="null" stroke-width="2" stroke="#F5F5DC" fill="#F5F5DC"/>
+  </g>
+ </g>
+</svg>
