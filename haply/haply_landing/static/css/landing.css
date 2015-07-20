@@ -246,7 +246,7 @@ section.success a.active {
 
     /* the black and white combination */
     background-color: white;
-    border-bottom: 5px solid black;
+    /*border-bottom: 2px solid black;*/
     opacity: 0.7;
 }
 /*#haply-logo {
@@ -266,12 +266,18 @@ section.success a.active {
 }
 
 #preorder {
-    border: 3px solid black;
+    /*border: 1px solid black;*/
     border-radius: 2px;
 }
-#preorder:hover {
-    background: black;
-    color: white;
+#preorder-text {
+    border: 2px solid #222;
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: -10px;
+}
+#preorder-text:hover {
+    background: #222;
+    color: #fff;
     transition: all .4s ease-in-out;
 }
 
@@ -293,7 +299,7 @@ section.success a.active {
 }
 
 #tech-section-header {
-    border: 3px solid white;
+    border: 2px solid white;
     padding: 10px;
 }
 
@@ -311,7 +317,7 @@ section.success a.active {
 
 /* The preorder section */
 #call-to-action {
-    border: 3px solid black;
+    border: 2px solid black;
     padding: 10px;
 }
 #pricetag {
@@ -319,7 +325,8 @@ section.success a.active {
     text-align: right;
 }
 #signup-button {
-    border: 2px solid black;
+    /*border: 2px solid black;*/
+    border: 0;
     border-radius: 0px;
     width: 100%;
     background-color: #F7AC16;
