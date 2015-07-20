@@ -27,7 +27,8 @@ h1, h2, h3, h4, h5, h6 {
     width: 230px;
     margin-left: -10px;
     margin-right: -10px;
-    border: 3px solid white;
+    /*border: 3px solid white;*/
+    border-radius: 1px;
 }
 .member-description {
     display: none;
@@ -56,11 +57,12 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom: 3px solid black;
 }
 .img-responsive:hover {
-    border: 3px solid black;
+    /*border: 2px solid #fff;*/
+    border: 0;
 }
 #haply-email {
     /*border-bottom: 3px solid #70026D;*/
-    background: purple;
+    background: #66236A;
 }
 
 header {
@@ -249,14 +251,12 @@ section.success a.active {
     /*border-bottom: 2px solid black;*/
     opacity: 0.7;
 }
-/*#haply-logo {
-    margin-left: -120px;
-    margin-top: -15px;
+
+#haply-logo {
+    /*margin-left: -120px;*/
+    margin-top: -20px;
 }
-#haply-title {
-    margin-top: -70px;
-    margin-left: -20px;
-}*/
+
 #haply-title, #technology, #team, #preorder {
     color: black;
 }
@@ -293,7 +293,8 @@ section.success a.active {
 
 /* The technology section */
 #portfolio {
-    background-color: #70026D;
+    /*background-color: #70026D;*/
+    background-color: #66236A;
     color: white;
     /*border-bottom: 10px solid #005878;*/
 }
@@ -311,18 +312,23 @@ section.success a.active {
 }
 
 #team-section-header {
-    border: 3px solid white;
+    border: 2px solid white;
     padding: 10px;
 }
 
 /* The preorder section */
 #call-to-action {
-    border: 2px solid black;
+    border: 2px solid #222;
     padding: 10px;
+    color: #222;
+}
+#call-to-action-text {
+    color: #222;
 }
 #pricetag {
     border-bottom: 1px solid #282828;
     text-align: right;
+    color: #222;
 }
 #signup-button {
     /*border: 2px solid black;*/
@@ -450,9 +456,11 @@ section.success a.active {
 .btn-outline.active {
     border: solid 2px #fff;
     /*background: #fff;*/
+    /*background: #70026D;
+    color: #F7AC16;*/
 
-    background: #70026D;
-    color: #F7AC16;
+    background: #66236A;
+    color: #fff;
 }
 
 .floating-label-form-group {
