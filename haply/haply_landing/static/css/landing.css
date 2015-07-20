@@ -120,6 +120,25 @@ header .intro-text .skills {
         /*background: black;*/
         /*width: 230px;*/
     }
+
+    /* Just remove the monitor image */
+    #monitors {
+        display: none;
+    }
+    /* Shrink logo */
+    #haply-logo img {
+        height: 60px;
+        width: 180px;
+    }
+    #tech-break {
+        height: 10px;
+    }
+    .demo {
+        display: none;
+    }
+    .d3-demo {
+        display: block;
+    }
 }
 
 @media(max-width:1200px) {
@@ -290,6 +309,9 @@ section.success a.active {
     margin-top: -80px;
     margin-left: -50px;
 }
+.d3-demo {
+    display: none;
+}
 
 /* The technology section */
 #portfolio {
@@ -302,6 +324,13 @@ section.success a.active {
 #tech-section-header {
     border: 2px solid white;
     padding: 10px;
+}
+
+#monitors {
+    margin-left: -20px;
+}
+#tech-break {
+    height: 50px;
 }
 
 /* The team section */

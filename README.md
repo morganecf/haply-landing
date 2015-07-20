@@ -7,13 +7,11 @@ View at www.haply.co
 ### TODO ###
 
 ## Very important 
-- Add logo 
 - Add modal for cadded model 
-- Mobile responsive demo (vertical and functional)
+- Mobile responsive demo - add picture
 - Debug mode off 
 - Survey 
 - Header sections need to be slightly smaller font for mobile
-- More professional team member pictures 
 
 - Figure out wtf is going on with company email, and:
 	- set signature
