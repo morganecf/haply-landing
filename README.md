@@ -8,11 +8,8 @@ View at www.haply.co
 
 ## Very important 
 - Add modal for cadded model 
-- Mobile responsive demo - add picture
 - Debug mode off 
 - Survey 
-- Header sections need to be slightly smaller font for mobile
-
 - Figure out wtf is going on with company email, and:
 	- set signature
 	- change profile image 

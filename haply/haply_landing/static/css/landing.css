@@ -99,6 +99,13 @@ header .intro-text .skills {
     display: none;
 }
 
+/* Hide the static demo picture and only display the interactive demo */
+@media(min-width:768px) {
+    #d3-pic {
+        display: none;
+    }
+}
+
 /* Make sure images and their descriptions resize and align properly */
 @media(max-width:768px) {
      /* Make sure there's some space between the demo and the header */
@@ -135,9 +142,6 @@ header .intro-text .skills {
     }
     .demo {
         display: none;
-    }
-    .d3-demo {
-        display: block;
     }
 }
 
@@ -268,7 +272,7 @@ section.success a.active {
     /* the black and white combination */
     background-color: white;
     /*border-bottom: 2px solid black;*/
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 #haply-logo {
@@ -309,9 +313,9 @@ section.success a.active {
     margin-top: -80px;
     margin-left: -50px;
 }
-.d3-demo {
+/*#d3-pic {
     display: none;
-}
+}*/
 
 /* The technology section */
 #portfolio {
