@@ -410,6 +410,22 @@ section.success a.active {
     }
 }
 
+/* Modal stuff */
+#kit-modal.fade.in ~ .modal-backdrop.fade.in {
+    background-color: #66236A;
+    opacity: 0.95;
+}
+.modal-content {
+    background-color: #66236A;
+    color: #fff;
+    /*border: 0;*/
+    /*box-shadow: none;*/
+    border-radius: 3px;
+}
+#modal-close-sign {
+    color: white;
+}
+
 .portfolio-item {
     margin-right: 5px;
     width: 200px;
