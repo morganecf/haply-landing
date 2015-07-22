@@ -337,6 +337,12 @@ section.success a.active {
     height: 50px;
 }
 
+/* The carousel display */
+#myCarousel {
+    width: 63%;
+    margin: 0 auto;
+}
+
 /* The team section */
 #about {
     background-color: #005878;
