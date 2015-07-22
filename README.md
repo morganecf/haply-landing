@@ -6,16 +6,11 @@ View at www.haply.co
 
 ### TODO ###
 
-## Very important 
-- Add modal for cadded model 
-- Debug mode off 
+- Logo needs to be the same color as name. less berry more matte 
 - Survey 
 - Figure out wtf is going on with company email, and:
 	- set signature
 	- change profile image 
 	- etc
 - Integrate Google Analytics
-
-## Less important
-- Google fonts - better font especially for text (lighter/thinner)
-- Change body colors from #2c3e50 to...grey? 
+- Better font (lighter & thinner, esp. for text)
