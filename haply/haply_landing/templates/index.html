@@ -140,7 +140,8 @@
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8 text-center">
-                    <h2 id="call-to-action">Sign up for our preorder!</h2>
+                    <!-- <h2 id="call-to-action">Sign up for our preorder!</h2> -->
+                    <h2 id="call-to-action">Interested in the Haplet?</h2>
                 </div>
                 <div class="col-lg-2"></div>
             </div>
@@ -194,10 +195,12 @@
                 <div class="col-md-8">
                     <p id="call-to-action-text">
 
-                        Sign up here to be on an advanced order list for our kit - you'll be notified as soon as it's ready for pre-order! The kit comes with the Haplet, which easily clips on to your tablet or computer screen, usage instructions, an API, online support, and some demo apps to get you started. If you're a maker, you'll have a full suite of tools to tinker with the hardware and develop your own awesome happs. 
+                        <!-- Sign up here to be on an advanced order list for our kit - you'll be notified as soon as it's ready for pre-order! The kit comes with the Haplet, which easily clips on to your tablet or computer screen, usage instructions, an API, online support, and some demo apps to get you started. If you're a maker, you'll have a full suite of tools to tinker with the hardware and develop your own awesome happs.  -->
+
+                        For more information about the Haplet and to stay up to date on our development process, sign up here! 
 
                     </p>
-                    <p id="pricetag">$149.99</p>
+                    <!-- <p id="pricetag">$149.99</p> -->
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -209,36 +212,29 @@
                     <form action="/bye/" method="post">
                         {% csrf_token %}
 
-                        <div class="row control-group">
+                        <!-- The user's name --> 
+                        <!-- <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                               
-                               <!-- The user's name --> 
-                               <!--  <label>Name</label> -->
                                 <input type="text" class="form-control" placeholder="Name" id="name" name="name" required data-validation-required-message="Please enter your name.">
                                 <p class="help-block text-danger"></p>
 
                             </div>
-                        </div>
+                        </div> -->
+                        <!-- The user's email address --> 
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-
-                                <!-- The user's email address --> 
-                                <!--  <label>Email Address</label> -->
                                 <input type="email" class="form-control" placeholder="Email" id="email" name="email" required data-validation-required-message="Please enter your email address.">
                                 <p class="help-block text-danger"></p>
-
                             </div>
                         </div>
-                        <div class="row control-group">
+                        <!-- The user's message --> 
+                        <!-- <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-
-                                <!-- The user's message --> 
-                                <!-- <label>Message</label> -->
                                 <textarea rows="5" class="form-control" placeholder="Comments? Questions? Interested in beta testing? Please share!" id="message" data-validation-required-message="Please enter a message." name="message"></textarea>
                                 <p class="help-block text-danger"></p>
                             
                             </div>
-                        </div>
+                        </div> -->
                         <br>
                         <div class="row">
                             <!-- The user's beta testing choice --> 

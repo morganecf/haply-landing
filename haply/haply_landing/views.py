@@ -10,31 +10,37 @@ def index(request):
 # The post-form page 
 def bye(request):
 	if request.method == 'POST':
-		name = request.POST.get('name')
+		### NAME AND MESSAGE DISABLED FOR NOW 
+
+		#name = request.POST.get('name')
 		email = request.POST.get('email')
-		message = request.POST.get('message')
+		#message = request.POST.get('message')
 		#beta = request.POST.get('beta') or 'no'
 
 		# If they want to beta test or not 
 		# if beta and beta == 'on':
 		# 	beta = 'yes' 
 
+		## SINCE NAME IS DISABLED, REPLACE WITH FIRST PART OF EMAIL 
+		name = email.split('@')[0]
+
 		# Save to a text file on the server 
 		fname = '_'.join(name.split()) + '.txt'
 		fpath = os.path.join(os.path.abspath('.'), 'preorder-info', fname)
 		f = open(fpath, 'w')
-		f.write('Name: ' + str(name) + '\n')
+		#f.write('Name: ' + str(name) + '\n')
 		f.write('Email: ' + str(email) + '\n')
-		f.write('Message: ' + str(message) + '\n')
+		#f.write('Message: ' + str(message) + '\n')
 		#f.write('Wants to beta test? ' + beta + '\n')
 		f.close()
 
 		# Send me and them an email 
-		body = "Hi " + str(name.split()[0]) + "!\n\n"
-		body += "Thank you for signing up to pre-order the Haplet! We'll send you an email once it's ready for pre-order.\n"
-		body += "Also, please fill out our short survey - we greatly appreciate any feedback on our product. It should only take a minute.\n"
-
-		body += "\nThank you!\n"
+		#body = "Hi " + str(name.split()[0]) + "!\n\n"
+		body = "Hi " + str(name) + "!\n\n"
+		body += "Thank you for your interest in Haply! We'll send you an email once the Haplet is ready for pre-order.\n\n"
+		body += "If you've got a second, please fill out our short survey - we greatly appreciate any feedback on our idea. It should only take a couple minutes.\n"
+		body += "http://goo.gl/forms/hJTAip7P8i"
+		body += "\n\nThank you!\n"
 		#body += "\n\nEmail us back with 'unsubscribe' if you don't want to receive any more emails from us.\n"
 
 		message = "\r\n".join([
