@@ -7,10 +7,14 @@ View at www.haply.co
 ### TODO ###
 
 - Logo needs to be the same color as name. less berry more matte 
-- Survey 
+- Fix monitor picture
+- Add twitter link 
 - Figure out wtf is going on with company email, and:
 	- set signature
 	- change profile image 
 	- etc
 - Integrate Google Analytics
-- Better font (lighter & thinner, esp. for text)
+- Better font (lighter & thinner & rounder
+- SEO 
+
+
