@@ -432,6 +432,37 @@ section.success a.active {
     color: white;
 }
 
+/* Gif stuff */
+.haplet-gif {
+    margin-top: 3px;
+    width: 367px;
+    height: 200px;
+}
+#computer-gif {
+    margin-left: 6px;
+}
+@media(max-width:1200px) {
+    .haplet-gif {
+        display: none;
+    }
+}
+@media(max-width:400px) {
+    #myCarousel {
+        width: 95%;
+    }
+    .haplet-gif {
+        display: block;
+    }
+    #computer-gif {
+        margin-left: -1px;
+    }
+}
+
+/* Video stuff */
+.video-link {
+    color: #66236A;
+}
+
 .portfolio-item {
     margin-right: 5px;
     width: 200px;

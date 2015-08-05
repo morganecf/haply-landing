@@ -8,7 +8,6 @@ View at www.haply.co
 
 - Logo needs to be the same color as name. less berry more matte 
 - Fix monitor picture
-- Add twitter link 
 - Figure out wtf is going on with company email, and:
 	- set signature
 	- change profile image 
