@@ -119,7 +119,7 @@ $(document).ready(function () {
 		      nx2 = node.x + r,
 		      ny1 = node.y - r,
 		      ny2 = node.y + r;
-		  return function(quad, x1, y1, x2, y2) {
+		  return function (quad, x1, y1, x2, y2) {
 		    if (quad.point && (quad.point !== node)) {
 		      var x = node.x - quad.point.x,
 		          y = node.y - quad.point.y,
@@ -281,13 +281,28 @@ $(document).ready(function () {
 		return coords[1] >= tablet.top.y + (tablet.width / 6);
 	};
 
+	// True when the user is moving inside the tablet 
+	var moving = false;
+
+	// Keeps track of how much time the user is spending in the tablet 
+	// global variable so that we can access this for google analytics
+	PLAY_TIME = 0.0;
+	var start = 0.0;
+
 	d3.select("#svg-canvas").on("mousemove", function (event) {
+		// If it's the first time we've entered the svg, start timing 
+		if (!moving) {
+			start = new Date().getTime();
+			moving = true;
+		}
+
 		// Only move everything if we've already clicked on the stylus
 		// and within the movable frame  
 		var coords = d3.mouse(this);
 
 		// Don't move past the halfway line 
 		if (in_tablet(coords) && below(coords)) {
+
 			// Move the stylus
 			haplet.stylus.attr("cx", coords[0]);
 			haplet.stylus.attr("cy", coords[1]);
@@ -317,6 +332,13 @@ $(document).ready(function () {
 		  	balls.root.py = coords[1];
 		  	balls.force.resume();
 		}
+	});
+
+	d3.select("#svg-canvas").on("mouseout", function (event) {
+		// If we've gone outside the svg, stop recording time and tally the time spent in the tablet 
+		PLAY_TIME += (new Date().getTime() - start);
+		start = 0.0;
+		moving = false;
 	});
 
 	// Mouse up event listener - stop moving

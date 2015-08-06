@@ -203,7 +203,7 @@
 
                         <!-- Sign up here to be on an advanced order list for our kit - you'll be notified as soon as it's ready for pre-order! The kit comes with the Haplet, which easily clips on to your tablet or computer screen, usage instructions, an API, online support, and some demo apps to get you started. If you're a maker, you'll have a full suite of tools to tinker with the hardware and develop your own awesome happs.  -->
 
-                        For more information about the Haplet and to stay up to date on our development process, sign up here! Don't forget to check out some cool demos <a class="video-link" href="https://youtu.be/n3IKoW7KBCE" target="_blank"><b><u>here</u></b></a> and <a class="video-link" href="https://youtu.be/nK020GU9vF4" target="_blank"><b><u>here</u></b></a>. 
+                        For more information about the Haplet and to stay up to date on our development process, sign up here! Don't forget to check out some cool demos <a class="video-link" id="video-1" href="https://youtu.be/n3IKoW7KBCE" target="_blank"><b><u>here</u></b></a> and <a class="video-link" href="https://youtu.be/nK020GU9vF4" id="video-2" target="_blank"><b><u>here</u></b></a>. 
 
                     </p>
                     <!-- <p id="pricetag">$149.99</p> -->
@@ -289,13 +289,16 @@
                     Colin Gallacher, Co-founder<br>
                     Masters Robotics<br>
                     McGill University
+                    <br><br>
+                    crgallacher@gmail.com
                 </div>
                 <img src="{{ STATIC_URL }}img/colin-professional.png" class="img-responsive" id="colin-pic" alt="">
                 <!-- <div class="member-name">Colin Gallacher, Co-founder</div> -->
                 <div class="member-description-mobile">
                     Colin Gallacher, Co-founder<br>
                     Masters Robotics<br>
-                    McGill University
+                    McGill University<br>
+                    crgallacher@gmail.com
                 </div>
             </div>
             <div class="col-sm-3" id="arash" class="member">
@@ -304,12 +307,15 @@
                     Arash Mohtat, Co-founder<br>
                     PhD Haptics<br>
                     McGill University
+                    <br><br>
+                    mohtat.arash@gmail.com
                 </div>
                 <img src="{{ STATIC_URL }}img/arash-professional.png" class="img-responsive" id="arash-pic" alt="">
                 <div class="member-description-mobile">
                     Arash Mohtat, Co-founder<br>
                     PhD Haptics<br>
-                    McGill University
+                    McGill University<br>
+                    mohtat.arash@gmail.com
                 </div>
             </div>
             <div class="col-sm-3" id="morgane" class="member">
@@ -318,13 +324,16 @@
                         Morgane Ciot, Co-founder<br>
                         BA&amp;S Computer Science<br>
                         McGill University
+                        <br><br>
+                        morganeciot@gmail.com
                 </div>
                 <img src="{{ STATIC_URL }}img/morgane-professional.png" class="img-responsive" id="morg-pic" alt="">
                 <!-- <div class="member-name">Morgane Ciot, Co-founder</div> -->
                 <div class="member-description-mobile">
                     Morgane Ciot, Co-founder<br>
                     BA&amp;S Computer Science<br>
-                    McGill University
+                    McGill University<br>
+                    morganeciot@gmail.com
                 </div>
             </div>
             <div class="col-sm-3" id="steve" class="member">
@@ -333,13 +342,16 @@
                     Steven Ding, Co-founder<br>
                     Masters Electrical Engineering<br>
                     McGill University
+                    <br><br>
+                    steveding1@gmail.com
                 </div>
                 <img src="{{ STATIC_URL }}img/steve-professional.png" class="img-responsive" id="steve-pic" alt="">
                 <!-- <div class="member-name">Steve Ding, Co-founder</div> -->
                 <div class="member-description-mobile">
                     Steven Ding, Co-founder<br>
                     Masters Electrical Engineering<br>
-                    McGill University
+                    McGill University<br>
+                    steveding1@gmail.com
                 </div>
             </div>
         </div>
@@ -354,10 +366,10 @@
                     <div class="footer-col col-md-4">
                         <ul class="list-inline">
                             <li>
-                                <a href="http://www.angel.co/haply-1" class="btn-social btn-outline"><i class="fa fa-fw fa-angellist"></i></a>
+                                <a href="http://www.angel.co/haply-1" id="haply-angellist" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-angellist"></i></a>
                             </li>
                             <li>
-                                <a href="https://twitter.com/haply_robotics" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                <a href="https://twitter.com/haply_robotics" id="haply-twitter" class="btn-social btn-outline" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                         </ul>
                         <h5>Montreal, QC</h5>
@@ -448,16 +460,117 @@
     <script src="{{ STATIC_URL }}js/classie.js"></script>
     <script src="{{ STATIC_URL }}js/cbpAnimatedHeader.js"></script>
 
-    <!-- ball demo --> 
-    <script src="{{ STATIC_URL }}js/jquery-1.11.3.min.js"></script>
-    <script src="{{ STATIC_URL }}js/d3.min.js"></script>
-    <script src="{{ STATIC_URL }}js/ball_demo.js"></script>
-
     <!-- contact form validation and ajax -->
     <script src="{{ STATIC_URL }}js/jqBootstrapValidation.js"></script>
 
     <!-- custom theme javascript -->
     <script src="{{ STATIC_URL }}js/freelancer.js"></script>
+
+    <!-- ball demo --> 
+    <script src="{{ STATIC_URL }}js/d3.min.js"></script>
+    <script src="{{ STATIC_URL }}js/ball_demo.js"></script>
+
+    <!-- Google Analytics: slightly faster version for modern browsers -->
+    <!-- 
+    <script async src='//www.google-analytics.com/analytics.js'></script>
+    <script>
+        window.ga = window.ga || function () { 
+            (ga.q = ga.q || []).push(arguments)
+        };
+        
+        ga.l =+ new Date;
+        
+        ga('create', 'UA-XXXX-Y', 'auto');
+        ga('send', 'pageview');
+    </script>
+     -->
+
+    <!-- Google Analytics -->
+    <script>
+        /**
+         * Creates a temporary global ga object and loads analy tics.js.
+         * Paramenters o, a, and m are all used internally.  They could have been declared using 'var',
+         * instead they are declared as parameters to save 4 bytes ('var ').
+         *
+         * @param {Window}      i The global context object.
+         * @param {Document}    s The DOM document object.
+         * @param {string}      o Must be 'script'.
+         * @param {string}      g URL of the analytics.js script. Inherits protocol from page.
+         * @param {string}      r Global name of analytics object.  Defaults to 'ga'.
+         * @param {DOMElement?} a Async script tag.
+         * @param {DOMElement?} m First script tag in document.
+         */
+        (function (i, s, o, g, r, a, m) {
+            // Acts as a pointer to support renaming.
+            i['GoogleAnalyticsObject'] = r; 
+
+            // Creates an initial ga() function.  The queued commands will be executed once analytics.js loads.
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            },
+
+            // Sets the time (as an integer) this tag was executed.  Used for timing hits.
+            i[r].l = 1 * new Date();
+
+            // Insert the script tag asynchronously.  Inserts above current tag to prevent blocking in
+            // addition to using the async attribute.
+            a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        // Function to send an event 
+        var send_event = function (obj_class, user_event) {
+            $("." + obj_class).on(user_event, function () {
+                var event_name = $(this).attr('id');
+                ga('send', 'event', obj_class, event_name, {useBeacon: true});
+            });
+        };
+
+        // Create the tracker with default parameters
+        ga('create', 'UA-66010002-1', 'auto'); 
+
+        // Send the regular pageview hit
+        ga('send', 'pageview', {'hitCallback': function () {}});
+
+        // Send a hit when user clicks on youtube video 
+        send_event("video-link", "click");
+
+        // Send a hit when user accesses external pages (twitter, angellist, etc)
+        send_event("btn-social", "click");
+
+        // Send a hit when user hovers over team members  
+        send_event("member-description", "mouseout");
+
+        // Send a conversion hit when user enters email 
+        // $("#signup-button").on("click", function () {
+        //     // Get the email 
+        //     var email = $("#email").val();
+        //     ga('send', 'event', )
+        // });
+
+        // Send the amount of the time the user spent playing with the demo 
+        window.onbeforeunload = function () {
+            ga('send', 'event', 'd3-demo', String(PLAY_TIME / 1000));
+
+            // Can't use this because GA doesn't allow you to see the event values 
+            // on an individual basis, so store the value in action instead 
+            // ga('send', {
+            //     'hitType': 'event',
+            //     'eventCategory': 'd3-demo',
+            //     'eventAction': 'play',
+            //     'eventLabel': 'test',
+            //     'eventValue': Math.round(PLAY_TIME),
+            //     useBeacon: true
+            // });
+        };
+
+
+    </script>
+
 
     <!-- Team member hover and checkbox functionality --> 
     <!-- This is bad, should just do this with css but wasn't working --> 
@@ -497,6 +610,7 @@
         });
 
     </script>
+
 
 </body>
 
