@@ -65,13 +65,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio" id="technology">The Technology</a>
+                        <a href="#portfolio" id="technology" class="header-button">The Technology</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about" id="team">The Team</a>
+                        <a href="#about" id="team" class="header-button">The Team</a>
                     </li>   
                     <li class="page-scroll">
-                        <a href="#contact" id="preorder"><div id="preorder-text">Sign Up</div></a>
+                        <a href="#contact" id="preorder" class="header-button"><div id="preorder-text">Sign Up</div></a>
                     </li>
                 </ul>
             </div>
@@ -426,11 +426,11 @@
                         </div>
 
                         <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <a class="left carousel-control" id="left-carousel" href="#myCarousel" role="button" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <a class="right carousel-control" id="right-carousel" href="#myCarousel" role="button" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>
@@ -544,6 +544,12 @@
 
         // Send a hit when user hovers over team members  
         send_event("member-description", "mouseout");
+
+        // Send a hit when user clicks on one of header items
+        send_event("header-button", "click");
+
+        // Send a hit when user clicks through pictures 
+        send_event("carousel-control", "click");
 
         // Send a conversion hit when user enters email 
         // $("#signup-button").on("click", function () {
